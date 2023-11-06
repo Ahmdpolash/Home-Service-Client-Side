@@ -1,5 +1,4 @@
 import React from "react";
-
 const ServiceCard = ({ service }) => {
   const {
     service_image,
@@ -10,10 +9,10 @@ const ServiceCard = ({ service }) => {
     price,
   } = service || [];
   return (
-    <div className="px-3">
-      <div class="relative flex flex-col w-full mt-8 border lg:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+    <div className="px-3 ">
+      <div class="relative flex flex-col  w-full mt-8 border lg:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
 
-        <div class="relative lg:w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
+        <div class="relative lg:w-2/5 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
 
           <img
             src={service_image}

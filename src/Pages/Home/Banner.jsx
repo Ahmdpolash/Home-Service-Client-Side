@@ -6,8 +6,8 @@ const Banner = () => {
   return (
     <>
       <div className="">
-        <div className="grid grid-cols-1 justify-center lg:grid-cols-2 lg:h-[80vh] items-center py-3 px-1">
-          <div className="lg:space-y-3 ml-6">
+        <div className="grid grid-cols-1 justify-center lg:grid-cols-2 lg:h-[80vh] items-center py-3 px-2">
+          <div className="lg:space-y-3 lg:ml-6">
             <h1 className="text-3xl lg:text-7xl font-bold lg:w-[600px]">
               Quality Cleaning{" "}
               <span className="text-[#2E856E]">for Your Home</span>
@@ -17,14 +17,15 @@ const Banner = () => {
               trusted professionals are ready to make your home a better place.
               Book now for reliable, convenient, and affordable solutions
             </p>
-            <div className="flex flex-col lg:flex-row items-center">
+            <div className="flex flex-col md:flex-row items-center">
               <button className="py-3 w-full lg:py-4 px-6 lg:mr-3 rounded-lg text-[18px] bg-[#2E856E] text-white mb-2 lg:mb-0 font-semibold">
                 Register Now
               </button>
-              <button className="py-3 w-full lg:py-4 px-6  rounded-lg text-[18px] bg-white shadow-md border font-semibold">
+              <button className="py-3 w-full lg:py-4 px-6 rounded-lg text-[18px] bg-white shadow-md border font-semibold">
                 Read More
               </button>
-              <img className="w-[80px] lg:w-[100px] ml-12 lg:ml-28 mb-3"
+              <img
+                className="w-[80px] lg:w-[100px] ml-12 lg:ml-28 mb-3"
                 src="https://freevetis.com/lclean/wp-content/uploads/sites/36/2022/07/46316463.png"
                 alt=""
               />

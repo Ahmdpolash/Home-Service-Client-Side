@@ -1,16 +1,18 @@
 import React from "react";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import '../Pages/Home/service.css'
 
 const Choose = () => {
   return (
-    <div className="bg-[#F3F3F3] px-7 lg:px-16 py-6 ">
-      <div className="grid grid-cols-1 lg:grid-cols-2 justify-around gap-3 items-center">
+    <div className="bg-[#f6f4f4] bgImg px-7 lg:px-16 py-6 ">
+      <div className="grid grid-cols-1 relative lg:grid-cols-2 justify-around gap-3 items-center">
         <div>
           <img
-            className="lg:w-[550px] rounded-3xl"
+            className="w-[340px] md:w-[550px]  rounded-3xl"
             src="https://freevetis.com/lclean/wp-content/uploads/sites/36/2022/07/women-in-uniform-and-gloves-giving-high-five-after-2021-12-0924-50-utc-1024x1001.jpg"
             alt=""
           />
+          <img className="w-[150px] h-[150px] md:w-[270px] absolute  left-[240px] md:left-[365px] lg:left-[28%] bottom-[540px] md:bottom-[365px] lg:-bottom-20 border-[10px] border-[#FFFFFF] md:h-[270px] rounded-full" src="https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/shot-of-a-young-woman-cleaning-an-office-with-her-colleague-in-the-background.jpg" alt="" />
         </div>
 
         <div className="space-y-3">
@@ -60,6 +62,29 @@ const Choose = () => {
             />
           </div>
         </div>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 items-center   lg:justify-between lg:mt-16">
+      <img className="w-[230px] brightness-0 hover:brightness-50  mx-auto "
+          src="https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/Clients-6.png"
+          alt=""
+        />
+     <img  className="w-[180px] brightness-0 hover:brightness-50 mx-auto"
+          src="https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/Clients-4.png"
+          alt=""
+        />
+      <img className="w-[180px] brightness-0 hover:brightness-50 mx-auto"
+          src="https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/Clients-2.png"
+          alt=""
+        />
+       <img className="w-[180px] brightness-0 hover:brightness-50 mx-auto"
+          src="https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/Clients-5.png"
+          alt=""
+        />
+      <img className="w-[180px] brightness-0 hover:brightness-50 mx-auto" 
+          src="https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/Clients-3.png"
+          alt=""
+        />
       </div>
     </div>
   );

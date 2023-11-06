@@ -1,0 +1,19 @@
+.bgImg {
+  background-image: url("https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/graph-paper-1.png");
+  background-size: cover;
+  background-size: 200px auto;
+  background-position: center center;
+  background-blend-mode: screen;
+}
+
+.subscribe {
+    background:rgba(58, 61, 66, 0.8) url(https://demo.creativemox.com/beclean/wp-content/uploads/sites/2/2023/09/selective-focus-of-smiling-multicultural-team-of-c-2022-12-16-17-06-00-utc.jpg) ;
+
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: darken;
+ 
+}
+
+

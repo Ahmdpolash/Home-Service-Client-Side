@@ -42,7 +42,7 @@ const Service = () => {
 
       <h1 className="text-center text-4xl font-bold">Our Top Services</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 mx-auto  lg:grid-cols-2 gap-5">
         {isLoading ? (
           <p>loading..</p>
         ) : (

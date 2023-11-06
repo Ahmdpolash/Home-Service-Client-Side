@@ -6,8 +6,9 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Registration/Register";
 import Error from "../Pages/Error/Error";
 import AddService from "../Pages/AddService/AddService";
-import Services from "../Pages/Services/Services";
+
 import About from "../Pages/About/About";
+import AllServices from "../Pages/AllServices/AllServices";
 
 const Route = createBrowserRouter([
   {
@@ -25,7 +26,8 @@ const Route = createBrowserRouter([
       },
       {
         path: "services",
-        element: <Services />,
+        element: <AllServices />,
+        
       },
       {
         path: "about",
