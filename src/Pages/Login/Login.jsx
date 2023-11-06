@@ -5,7 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 import Lottie from "lottie-react";
-import loginIcon from '../../assets/login.json'
+import loginIcon from "../../assets/login.json";
+import axios from "axios";
 
 const Login = () => {
   const { loginUser, googleLogin } = useContext(authContext);
@@ -23,8 +24,8 @@ const Login = () => {
 
     loginUser(email, password)
       .then((res) => {
-        console.log(res.user);
-        toast.success("logged In", { id: toastId });
+       
+
         navigate("/");
       })
       .catch((err) => {
@@ -44,8 +45,11 @@ const Login = () => {
   return (
     <div className="dark:bg-[#051145] ">
       <div className="flex flex-col lg:flex-row items-center justify-around h-screen">
-      <div className="mt-52 lg:mt-0">
-          <Lottie className="w-[330px] lg:w-[550px]" animationData={loginIcon}></Lottie>
+        <div className="mt-52 lg:mt-0">
+          <Lottie
+            className="w-[330px] lg:w-[550px]"
+            animationData={loginIcon}
+          ></Lottie>
         </div>
         <div className="">
           <form
@@ -117,8 +121,6 @@ const Login = () => {
             </span>
           </form>
         </div>
-
-        
       </div>
     </div>
   );

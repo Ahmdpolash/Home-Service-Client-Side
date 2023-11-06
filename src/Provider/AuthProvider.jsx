@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
-    GoogleAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -10,13 +10,14 @@ import {
 } from "firebase/auth";
 
 import auth from "../firebase/firebase_config";
+import axios from "axios";
 
 export const authContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const googleProvider = new GoogleAuthProvider;
+  const googleProvider = new GoogleAuthProvider();
   //!createUSer
 
   const createUser = (email, password) => {
@@ -35,7 +36,8 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
-    return signOut(auth);c
+    return signOut(auth);
+    c;
   };
 
   //!updateProfile
@@ -47,17 +49,26 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-
-  //!googleLogin 
-  const googleLogin = () =>{
-    setLoading(true)
-    return signInWithPopup(auth,googleProvider)
-  }
+  //!googleLogin
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
   //!Observe
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      const userEmail = currentUser?.email || user?.email;
+
+      const loggedUser = { email: userEmail };
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", loggedUser, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
       console.log(currentUser);
       setLoading(false);
     });
@@ -66,7 +77,15 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { createUser, loginUser,googleLogin, logOut,profile, user, loading };
+  const authInfo = {
+    createUser,
+    loginUser,
+    googleLogin,
+    logOut,
+    profile,
+    user,
+    loading,
+  };
   return (
     <authContext.Provider value={authInfo}>{children}</authContext.Provider>
   );
