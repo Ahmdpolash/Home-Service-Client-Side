@@ -25,14 +25,17 @@ const Nav = () => {
 
         <div className="flex gap-4 md:order-2">
           {user && (
-            <Dropdown className="bg-[#2E856E] " label="Dashboard" dismissOnClick={false}>
+            <Dropdown className=" " label="Dashboard" dismissOnClick={false}>
               <Dropdown.Item>
                 <Link to='/myService'><button>My Service</button></Link>
               </Dropdown.Item>
               <Dropdown.Item>
                 <Link to='/addService'><button>Add Service</button></Link>
               </Dropdown.Item>
-              <Dropdown.Item>My Schedules</Dropdown.Item>
+              <Dropdown.Item>
+                <Link to='/schedule'><button>My Schedule</button></Link>
+              </Dropdown.Item>
+              
             </Dropdown>
           )}
 
@@ -71,7 +74,7 @@ const Nav = () => {
           
           <Navbar.Link href="#"><NavLink className={({isActive}) => isActive? 'bg-[#2E856E] text-white block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/services'><button className="font-bold text-[17px]">Services</button></NavLink></Navbar.Link>
           <Navbar.Link href="#"><NavLink className={({isActive}) => isActive? 'bg-[#2E856E] text-white block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/about'><button className="font-bold text-[17px]">About</button></NavLink></Navbar.Link>
-          <Navbar.Link href="#">Contact</Navbar.Link>
+         
         </Navbar.Collapse>
       </Navbar>
     </div>
