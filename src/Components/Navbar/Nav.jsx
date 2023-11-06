@@ -66,11 +66,11 @@ const Nav = () => {
         <Navbar.Collapse>
           <Navbar.Link 
            >
-          <NavLink className={({isActive}) => isActive? 'text-[#2E856E] underline block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/'><button className="font-bold text-[17px]">Home</button></NavLink>
+          <NavLink className={({isActive}) => isActive? ' bg-[#2E856E] text-white underline block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/'><button className="font-bold text-[17px]">Home</button></NavLink>
           </Navbar.Link>
           
-          <Navbar.Link href="#"><NavLink className={({isActive}) => isActive? 'bg-red-200 block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/services'><button className="font-bold text-[17px]">Services</button></NavLink></Navbar.Link>
-          <Navbar.Link href="#"><NavLink className={({isActive}) => isActive? 'bg-red-200 block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/about'><button className="font-bold text-[17px]">About</button></NavLink></Navbar.Link>
+          <Navbar.Link href="#"><NavLink className={({isActive}) => isActive? 'bg-[#2E856E] text-white block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/services'><button className="font-bold text-[17px]">Services</button></NavLink></Navbar.Link>
+          <Navbar.Link href="#"><NavLink className={({isActive}) => isActive? 'bg-[#2E856E] text-white block lg:inline px-3 py-2 rounded-md font-semibold' : ''} to='/about'><button className="font-bold text-[17px]">About</button></NavLink></Navbar.Link>
           <Navbar.Link href="#">Contact</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>

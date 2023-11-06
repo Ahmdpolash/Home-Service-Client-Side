@@ -9,6 +9,7 @@ import AddService from "../Pages/AddService/AddService";
 
 import About from "../Pages/About/About";
 import AllServices from "../Pages/AllServices/AllServices";
+import Details from "../Pages/Details/Details";
 
 const Route = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const Route = createBrowserRouter([
         path: "about",
         element: <About />,
       },
+      {
+        path:'/details/:id',
+        element:<Details/>,
+        loader:() => fetch(`http://localhost:5000/api/services`)
+      }
     ],
   },
   {

@@ -1,6 +1,7 @@
 import { Avatar } from "flowbite-react";
 import React from "react";
 import { AiTwotoneStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -18,9 +19,11 @@ const Banner = () => {
               Book now for reliable, convenient, and affordable solutions
             </p>
             <div className="flex flex-col md:flex-row items-center">
-              <button className="py-3 w-full lg:py-4 px-6 lg:mr-3 rounded-lg text-[18px] bg-[#2E856E] text-white mb-2 lg:mb-0 font-semibold">
-                Register Now
-              </button>
+             
+                <button className="py-3 w-full lg:py-4 px-6 lg:mr-3 rounded-lg text-[18px] bg-[#2E856E] text-white mb-2 lg:mb-0 font-semibold">
+                  Register Now
+                </button>
+            
               <button className="py-3 w-full lg:py-4 px-6 rounded-lg text-[18px] bg-white shadow-md border font-semibold">
                 Read More
               </button>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const ServiceCard = ({ service }) => {
   const {
     service_image,
@@ -7,13 +8,15 @@ const ServiceCard = ({ service }) => {
     provider_name,
     provider_image,
     price,
+    _id,
   } = service || [];
+
+  const sliceDesc = description.split(" ").slice(0, 35).join(" ");
+  
   return (
     <div className="px-3 ">
       <div class="relative flex flex-col  w-full mt-8 border lg:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
-
         <div class="relative lg:w-2/5 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
-
           <img
             src={service_image}
             alt="image"
@@ -26,10 +29,13 @@ const ServiceCard = ({ service }) => {
               {service_name}
             </h1>
             <div className="ml-2">
-              <span className="bg-red-200 px-2 lg:px-5 -mr-[px] lg:-mr-[20px] py-2 font-bold">Price : {price}</span>
+              <span className="bg-[#2E856E] text-white px-2 lg:px-5 -mr-[px] lg:-mr-[20px] py-2 font-bold">
+                Price : {price}
+              </span>
             </div>
           </div>
-          <p className="text-gray-600 py-3">{description}</p>
+
+          <p className="text-gray-600 py-3">{sliceDesc}</p>
 
           <img
             className="w-[60px] h-[60px]  mt-2 rounded-full"
@@ -41,14 +47,14 @@ const ServiceCard = ({ service }) => {
               <h2 className="text-[18px] font-bold">{provider_name}</h2>
             </div>
             <div>
-              <a class="inline-block" href="#">
+              <Link to={`/details/${_id}`}>
                 <button
                   class="flex  items-center  text-black bg-[#67eac7] border hover:bg-white hover:border gap-2 px-6 py-3 font-sans text-xs text-center font-bold uppercase align-middle transition-all rounded-lg select-none hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                   type="button"
                 >
                   View Details
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
