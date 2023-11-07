@@ -13,6 +13,7 @@ import Details from "../Pages/Details/Details";
 import MySchedule from "../Pages/Schedule/MySchedule";
 import ManageService from "../Pages/ManageService/ManageService";
 import PrivateRoute from "./PrivateRoute";
+import Update from "../Pages/Update/Update";
 
 const Route = createBrowserRouter([
   {
@@ -52,7 +53,13 @@ const Route = createBrowserRouter([
       {
         path: "/manage",
         element: <PrivateRoute><ManageService /></PrivateRoute>,
+        loader:()=>fetch('http://localhost:5000/api/bookings')
       },
+      // {
+      //   path:'/update/:id',
+      //   element:<Update/>,
+      //   loader:({params}) => fetch(`http://localhost:5000/api/bookings/${params.id}`)
+      // }
     ],
   },
   {

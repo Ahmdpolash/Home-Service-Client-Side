@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
+import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 
 const AllServiceCard = ({ service }) => {
@@ -27,7 +28,7 @@ const AllServiceCard = ({ service }) => {
             <div class="px-6 py-2 ">
               <div className="flex justify-between items-center">
                 <h1 className="text-[18px] font-bold text-[#2E856E]">
-                  {service.service_name}
+                  {service.service_name} <Skeleton></Skeleton>
                 </h1>
                 <div className="ml-2">
                   <span className="bg-[#2E856E] text-white roundlmd px-2 lg:px-5 -mr-[px] lg:-mr-[20px] py-2 font-bold">

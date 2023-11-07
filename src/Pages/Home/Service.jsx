@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import loading from "../../assets/Animation - 1699267842091.json";
 
 const Service = () => {
+  
   const { data, isLoading } = useQuery({
     queryKey: ["services"],
     queryFn: async () => {

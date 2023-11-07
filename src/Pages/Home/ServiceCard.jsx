@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
+
 const ServiceCard = ({ service }) => {
   const {user} = useContext(authContext)
   const {
@@ -28,7 +29,7 @@ const ServiceCard = ({ service }) => {
         <div className="px-6 py-2">
           <div className="flex justify-between items-center">
             <h1 className="text-[18px] font-bold text-[#2E856E]">
-              {service_name}
+              {service_name} 
             </h1>
             <div className="ml-2">
               <span className="bg-[#2E856E] text-white px-2 lg:px-5 -mr-[px] lg:-mr-[20px] py-2 font-bold">

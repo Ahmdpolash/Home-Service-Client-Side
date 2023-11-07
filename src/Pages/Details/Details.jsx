@@ -4,6 +4,8 @@ import Marquee from "react-fast-marquee";
 import { useContext } from "react";
 import { authContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Details = () => {
   const data = useLoaderData();
@@ -13,6 +15,41 @@ const Details = () => {
   const filter = data.find((service) => service._id == id);
 
   console.log(filter);
+
+  const handleAddService = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const price = form.price.value;
+    const serviceName = form.serviceName.value;
+    const image = form.image.value;
+    const userEmail = form.userEmail.value;
+    const providerEmail = form.providerEmail.value;
+    const description = form.description.value;
+    const date = form.date.value;
+    const providerName = filter.provider_name;
+    const addFormData = {
+      price,
+      date,
+      serviceName,
+      image,
+      userEmail,
+      providerEmail,
+      description,
+      providerName
+    };
+
+    axios
+      .post("http://localhost:5000/api/bookings", addFormData)
+      .then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success",
+        });
+      });
+  };
 
   return (
     <div>
@@ -52,7 +89,8 @@ const Details = () => {
               className="rounded-lg w-full lg:h-[340px]"
               src={filter.service_image}
               alt=""
-            />a
+            />
+
             <div className="bg-[#dbf1eb] flex justify-between my-4 p-4 rounded-lg">
               <button
                 onClick={() =>
@@ -111,7 +149,10 @@ const Details = () => {
               Service Provider & Service Details
             </h1>
 
-            <form className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <form
+              onSubmit={handleAddService}
+              className="grid grid-cols-1 gap-3 lg:grid-cols-2"
+            >
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-semibold">Service Name</span>
@@ -153,7 +194,7 @@ const Details = () => {
                   disabled
                   placeholder="Provider Email"
                   name="providerEmail"
-                  defaultValue={user.email}
+                  defaultValue={filter.yourEmail}
                   className="input input-bordered"
                   required
                 />
@@ -166,6 +207,7 @@ const Details = () => {
                   type="email"
                   defaultValue={user?.email}
                   disabled
+                  name="userEmail"
                   placeholder="User Email"
                   className="input input-bordered"
                   required
@@ -179,6 +221,7 @@ const Details = () => {
                   type="text"
                   defaultValue={filter.price}
                   placeholder="Price"
+                  name="price"
                   className="input input-bordered"
                   required
                 />
@@ -189,6 +232,7 @@ const Details = () => {
                 </label>
                 <input
                   type="date"
+                  name="date"
                   placeholder="password"
                   className="input input-bordered"
                   required
@@ -209,7 +253,7 @@ const Details = () => {
               </div>
 
               <div className="form-control lg:col-span-2 mt-6">
-                <button className="btn btn-primary">
+                <button type="submit" className="btn btn-primary">
                   Purchase This Service
                 </button>
               </div>
@@ -217,7 +261,9 @@ const Details = () => {
 
             <div className="modal-action">
               <form className="mx-auto" method="dialog">
-                <button className="btn">Order Later</button>
+                <button type="submit" className="btn">
+                  Order Later
+                </button>
               </form>
             </div>
           </div>
