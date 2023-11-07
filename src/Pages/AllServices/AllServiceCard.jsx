@@ -13,6 +13,7 @@ const AllServiceCard = ({ service }) => {
 
   return (
     <div>
+      
       <div className="px-4 lg:px-16">
         <div className="">
           <div class="relative flex flex-col mb-5 lg:h-[310px] w-full border lg:flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">

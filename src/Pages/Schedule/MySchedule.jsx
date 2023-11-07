@@ -1,9 +1,15 @@
 import React from "react";
 import Pending from "./Pending";
+import { Helmet } from "react-helmet";
 
 const MySchedule = () => {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BeClean | My Schedule</title>
+
+      </Helmet>
       <div className="px-4 lg:px-16 py-3 lg:py-8 lg:h-[55vh]">
         <div className="space-y-2">
           <h1 className="font-bold text-2xl lg:text-4xl">My Bookings</h1>

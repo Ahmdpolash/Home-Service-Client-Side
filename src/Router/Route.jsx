@@ -11,39 +11,48 @@ import About from "../Pages/About/About";
 import AllServices from "../Pages/AllServices/AllServices";
 import Details from "../Pages/Details/Details";
 import MySchedule from "../Pages/Schedule/MySchedule";
+import ManageService from "../Pages/ManageService/ManageService";
+import PrivateRoute from "./PrivateRoute";
 
 const Route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement:<Error/>,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
         element: <Home />,
       },
       {
-        path:'addService',
-        element:<AddService/>
+        path: "addService",
+        element: <PrivateRoute><AddService /></PrivateRoute>,
       },
       {
         path: "services",
         element: <AllServices />,
-        
       },
       {
         path: "about",
         element: <About />,
       },
       {
-        path:'/details/:id',
-        element:<Details/>,
-        loader:() => fetch(`http://localhost:5000/api/services`)
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
+        loader: () => fetch(`http://localhost:5000/api/services`),
       },
       {
-        path: '/schedule',
-        element:<MySchedule/>
-      }
+        path: "/schedule",
+        element: <MySchedule />,
+      },
+      {
+        path: "/manage",
+        element: <PrivateRoute><ManageService /></PrivateRoute>,
+      },
     ],
   },
   {

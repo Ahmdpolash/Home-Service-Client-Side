@@ -35,7 +35,7 @@ const Service = () => {
           data
             ?.slice(0, 4)
             .map((service) => (
-              <ServiceCard key={service._id} service={service}></ServiceCard>
+              <ServiceCard key={service._id} service={service} ></ServiceCard>
             ))
         )}
       </div>

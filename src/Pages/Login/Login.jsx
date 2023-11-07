@@ -2,14 +2,16 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 import Lottie from "lottie-react";
 import loginIcon from "../../assets/login.json";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { loginUser, googleLogin } = useContext(authContext);
+  const location = useLocation();
 
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -24,9 +26,8 @@ const Login = () => {
 
     loginUser(email, password)
       .then((res) => {
-       
-
-        navigate("/");
+        toast.success("logged In",{id:toastId});
+        navigate(location?.state? location?.state : '/')
       })
       .catch((err) => {
         toast.error(err.message, { id: toastId });
@@ -37,13 +38,18 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin().then((res) => {
       console.log(res.user);
-      toast.success("logged In");
-      navigate("/");
+      toast.success("logged In",);
+      navigate(location?.state ? location?.state : '/')
+
     });
   };
 
   return (
     <div className="dark:bg-[#051145] ">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BeClean | Login</title>
+      </Helmet>
       <div className="flex flex-col lg:flex-row items-center justify-around h-screen">
         <div className="mt-52 lg:mt-0">
           <Lottie

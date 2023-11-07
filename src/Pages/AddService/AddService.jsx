@@ -1,43 +1,51 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import { authContext } from "../../Provider/AuthProvider";
 
 const AddService = () => {
+  const { user } = useContext(authContext);
+
   const handleAddService = (e) => {
     e.preventDefault();
     const form = e.target;
-    const image = form.image.value;
-    const serviceName = form.ServiceName.value;
-    const providerEmail = form.providerEmail.value;
-    const yourEmail = form.yourEmail.value;
+    const service_image = form.image.value;
+    const service_name = form.serviceName.value;
+    const provider_name = form.yourName.value;
+    const yourEmail = user.email;
     const price = form.price.value;
-    const area = form.area.value;
+    const provider_location = form.area.value;
     const description = form.description.value;
+
     const formData = {
-      image,
-      serviceName,
-      providerEmail,
+      service_image,
+      service_name,
+      provider_name,
       yourEmail,
       price,
-      area,
+      provider_location,
       description,
     };
     console.log(formData);
 
     axios.post("http://localhost:5000/api/services", formData).then((res) => {
       console.log(res.data);
-      if (res.data.insertedCount > 0) {
-        Swal.fire({
-          title: "Good job!",
-          text: "Service Added Successfully!",
-          icon: "success",
-        });
-      }
+
+      Swal.fire({
+        title: "Good job!",
+        text: "Service Added Successfully!",
+        icon: "success",
+      });
     });
   };
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BeClean | Add Service</title>
+      </Helmet>
       <div>
         <div className="bg-gray-100 p-4">
           <form
@@ -73,6 +81,8 @@ const AddService = () => {
                 <label className="input-group w-full">
                   <input
                     type="text"
+                    disabled
+                    defaultValue={user.photoURL}
                     placeholder="Service Image URL."
                     name="image"
                     className="input outline-red-400 w-full input-bordered"
@@ -85,14 +95,16 @@ const AddService = () => {
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text dark:text-white text-[17px] font-semibold">
-                    Service Provider Email
+                    Your Name
                   </span>
                 </label>
 
                 <input
                   type="text"
-                  placeholder="Service Provider Email"
-                  name="providerEmail"
+                  placeholder="Your Name"
+                  disabled
+                  defaultValue={user?.displayName}
+                  name="yourName"
                   className="input outline-red-400 w-full input-bordered"
                 />
               </div>
@@ -108,6 +120,8 @@ const AddService = () => {
                   type="email"
                   placeholder="Your Email"
                   name="yourEmail"
+                  disabled
+                  defaultValue={user.email}
                   className="input outline-red-400 w-full input-bordered"
                 />
               </div>

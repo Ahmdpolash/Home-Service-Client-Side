@@ -3,11 +3,12 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { useContext } from "react";
 import { authContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
   const data = useLoaderData();
   const { id } = useParams();
-  const {user} = useContext(authContext)
+  const { user } = useContext(authContext);
 
   const filter = data.find((service) => service._id == id);
 
@@ -15,6 +16,10 @@ const Details = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BeClean | {filter.service_name}</title>
+      </Helmet>
       <div className="px-4 lg:px-16 py-8">
         <div className="bg-[#81edd0] p-5 rounded-lg">
           <div className="flex gap-6 items-center">
@@ -47,7 +52,7 @@ const Details = () => {
               className="rounded-lg w-full lg:h-[340px]"
               src={filter.service_image}
               alt=""
-            />
+            />a
             <div className="bg-[#dbf1eb] flex justify-between my-4 p-4 rounded-lg">
               <button
                 onClick={() =>
@@ -148,6 +153,7 @@ const Details = () => {
                   disabled
                   placeholder="Provider Email"
                   name="providerEmail"
+                  defaultValue={user.email}
                   className="input input-bordered"
                   required
                 />

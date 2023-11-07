@@ -4,6 +4,9 @@ import React from "react";
 import { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import AllServiceCard from "./AllServiceCard";
+import sloading from "../../assets/sloading.json";
+import Lottie from "lottie-react";
+import { Helmet } from "react-helmet";
 
 const AllServices = () => {
   const [search, setSearch] = useState("");
@@ -21,6 +24,11 @@ const AllServices = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BeClean | Service</title>
+
+      </Helmet>
       <form action="" className=" text-center py-6">
         <input
           id="search-box"
@@ -38,16 +46,28 @@ const AllServices = () => {
           Search
         </button>
       </form>
-
-      {data
-        ?.filter((service) => {
-          return search.toLowerCase() === ""
-            ? service
-            : service.service_name.toLowerCase().includes(search);
-        })
-        ?.map((service) => (
-          <AllServiceCard key={service._id} service={service}></AllServiceCard>
-        ))}
+     
+      {isLoading ? (
+        <div className="flex mx-auto justify-center lg:h-[60vh] items-center">
+          <Lottie
+            className="w-[120px] lg:w-[190px]"
+            animationData={sloading}
+          ></Lottie>
+        </div>
+      ) : (
+        data
+          ?.filter((service) => {
+            return search.toLowerCase() === ""
+              ? service
+              : service.service_name.toLowerCase().includes(search);
+          })
+          ?.map((service) => (
+            <AllServiceCard
+              key={service._id}
+              service={service}
+            ></AllServiceCard>
+          ))
+      )}
     </div>
   );
 };
