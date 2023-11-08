@@ -7,6 +7,7 @@ import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import Pending from "./Pending";
 
 const MySchedule = () => {
+
   const { user } = useContext(authContext);
   const [bookings, setBookings] = useState([]);
 
@@ -18,7 +19,7 @@ const MySchedule = () => {
     });
   }, []);
 
-
+  
 
   return (
     <div>

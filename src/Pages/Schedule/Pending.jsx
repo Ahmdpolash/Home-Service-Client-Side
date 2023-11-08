@@ -1,6 +1,21 @@
+import axios from "axios";
 import React from "react";
+import { useContext } from "react";
+import { useEffect } from "react";
+import { authContext } from "../../Provider/AuthProvider";
 
 const Pending = () => {
+
+  const {user} = useContext(authContext)
+
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/api/pending/${user.email}`)
+    .then(res=>{
+      console.log(res.data);
+    })
+  },[user])
+
+
   return (
     <div className="px-4 lg:px-16 py-3 lg:py-8">
       <div className="space-y-2">
