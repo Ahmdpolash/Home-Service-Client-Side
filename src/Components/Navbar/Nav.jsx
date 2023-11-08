@@ -39,9 +39,10 @@ const Nav = () => {
             {user && (
               <Dropdown className=" " label="Dashboard" dismissOnClick={false}>
                 <Dropdown.Item>
-                  <Link to="/manage">
-                    <button>Manage Service</button>
+                  <Link to="/myService">
+                    <button>My Service</button>
                   </Link>
+                  
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <Link to="/addService">

@@ -10,10 +10,12 @@ import AddService from "../Pages/AddService/AddService";
 import About from "../Pages/About/About";
 import AllServices from "../Pages/AllServices/AllServices";
 import Details from "../Pages/Details/Details";
-import MySchedule from "../Pages/Schedule/MySchedule";
-import ManageService from "../Pages/ManageService/ManageService";
+
+import ManageService from "../Pages/ManageService/MySchedule";
 import PrivateRoute from "./PrivateRoute";
-import Update from "../Pages/Update/Update";
+// import Update from "../Pages/Update/Update";
+import MyService from "../Pages/Schedule/MyService";
+import MySchedule from "../Pages/ManageService/MySchedule";
 
 const Route = createBrowserRouter([
   {
@@ -49,6 +51,10 @@ const Route = createBrowserRouter([
       {
         path: "/schedule",
         element: <MySchedule />,
+      },
+      {
+        path: "/myService",
+        element: <MyService />,
       },
       {
         path: "/manage",

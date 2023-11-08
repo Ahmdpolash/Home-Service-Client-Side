@@ -5,29 +5,37 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 
 const Update = () => {
-  const {user} = useContext(authContext)
-const [data,setData] = useState([])
-  const {id} = useParams()
+  const { user } = useContext(authContext);
+
+  const data = useLoaderData();
+  console.log(data);
+
+  const { id } = useParams();
 
   console.log(id);
 
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/api/bookings/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setData(data);
+  //     });
+  // }, []);
 
-  useEffect(() =>{
-    fetch(`http://localhost:5000/api/bookings/${id}`)
-
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      setData(data)
-    })
-   
-  },[])
-
-
-
-  const{service_image, service_name,yourEmail,provider_location,provider_name,description,price} = data 
+  const {
+    image,
+    serviceName,
+    yourEmail,
+    provider_location,
+    provider_name,
+    description,
+    price,
+    _id
+  } = data;
 
   const handleUpdate = (e) => {
+
     e.preventDefault();
     const form = e.target;
     const service_image = form.image.value;
@@ -49,14 +57,12 @@ const [data,setData] = useState([])
     };
     console.log(formData);
 
-    axios.put(`http://localhost:5000/api/services/${r._id}`,formData)
-    .then(res => {
+    axios
+      .put(`http://localhost:5000/api/services/${_id}`, formData)
+      .then((res) => {
         console.log(res.data);
         Swal.fire("Good job!", "Product Updated Successfully!", "success");
-
-    })
-
-
+      });
   };
 
   return (
@@ -87,7 +93,7 @@ const [data,setData] = useState([])
                     type="text"
                     placeholder="Service Name"
                     name="serviceName"
-                    defaultValue={data.name}
+                    defaultValue={serviceName}
                     className="input w-full input-bordered"
                   />
                 </label>
@@ -102,8 +108,7 @@ const [data,setData] = useState([])
                 <label className="input-group w-full">
                   <input
                     type="text"
-                    
-                    defaultValue={service_image}
+                    defaultValue={image}
                     placeholder="Service Image URL."
                     name="image"
                     className="input outline-red-400 w-full input-bordered"

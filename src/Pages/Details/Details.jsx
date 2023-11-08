@@ -6,13 +6,15 @@ import { authContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Details = () => {
   const data = useLoaderData();
+  
   const { id } = useParams();
   const { user } = useContext(authContext);
 
-  const filter = data.find((service) => service._id == id);
+  const filter = data.find((service) => service._id === id);
 
   console.log(filter);
 

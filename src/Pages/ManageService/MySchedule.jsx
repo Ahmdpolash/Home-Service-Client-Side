@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import Pending from "./Pending";
 
-const ManageService = () => {
+const MySchedule = () => {
   const { user } = useContext(authContext);
   const [bookings, setBookings] = useState([]);
 
@@ -25,11 +26,10 @@ const ManageService = () => {
         <meta charSet="utf-8" />
         <title>BeClean | Manage Service</title>
       </Helmet>
-      <div className="px-4 lg:px-16 py-3 h-[80vh] lg:py-8">
+
+      <div className="px-4 lg:px-16 py-3  lg:py-8">
         <div className="space-y-2">
-          <h1 className="font-bold text-2xl lg:text-4xl">
-            Manage Your Services
-          </h1>
+          <h1 className="font-bold text-2xl lg:text-4xl">My Bookings</h1>
           <p className="bg-gray-100 font-semibold py-2 px-4">
             Total {bookings.length} Service Found
           </p>
@@ -37,7 +37,7 @@ const ManageService = () => {
 
         <div>
           <div>
-            <div className="overflow-x-auto lg:h-[60vh]  my-4 mx-auto text-white">
+            <div className="overflow-x-auto  my-4 mx-auto text-white">
               <table className="table">
                 <thead>
                   <tr className="text-center font-semibold text-[16px] text-white bg-[#2E856E]">
@@ -47,7 +47,7 @@ const ManageService = () => {
                     <th>Provider Name</th>
                     <th>Price</th>
                     <th>Date </th>
-                    <th>Edit</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,18 +92,9 @@ const ManageService = () => {
                         </td>
 
                         <th>
-                          <button 
-                            type="submit"
-                            className="btn btn-ghost mr-2 bg-red-500 py-2 lg:py-3 px-3 text-white "
-                          >
-                            <AiOutlineDelete className="text-2xl"></AiOutlineDelete>
-                          </button>
-                          <button
-                            type="submit"
-                            className="btn btn-ghost bg-[#2E856E] py-2 lg:py-3 px-3 text-white "
-                          >
-                            <AiOutlineEdit className="text-2xl"></AiOutlineEdit>
-                          </button>
+                          <span className="bg-red-300 py-2 px-2 text-black rounded-lg">
+                            Pending
+                          </span>
                         </th>
                       </tr>
                     </>
@@ -114,8 +105,12 @@ const ManageService = () => {
           </div>
         </div>
       </div>
+
+      <div>
+        <Pending />
+      </div>
     </div>
   );
 };
 
-export default ManageService;
+export default MySchedule;

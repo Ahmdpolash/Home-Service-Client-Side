@@ -16,7 +16,7 @@ const Service = () => {
     },
   });
 
-  console.log(data);
+
 
   return (
     <div className="py-6 px-4 lg:px-16">
