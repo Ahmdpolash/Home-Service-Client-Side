@@ -10,7 +10,7 @@ const MySchedule = () => {
   const { user } = useContext(authContext);
   const [bookings, setBookings] = useState([]);
 
-  const url = `http://localhost:5000/api/bookings/${user.email}`;
+  const url = `http://localhost:5000/api/bookings/${user?.email}`;
 
   useEffect(() => {
     axios.get(url).then((res) => {
@@ -18,7 +18,7 @@ const MySchedule = () => {
     });
   }, []);
 
-  console.log(bookings);
+
 
   return (
     <div>

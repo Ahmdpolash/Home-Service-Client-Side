@@ -35,7 +35,7 @@ const AllServiceCard = ({ service }) => {
                 </h1>
                 <div className="ml-2">
                   <span className="bg-[#2E856E] text-white roundlmd px-2 lg:px-5 -mr-[px] lg:-mr-[20px] py-2 font-bold">
-                    Price : {service.price}
+                    Price : ${service.price}
                   </span>
                 </div>
               </div>
