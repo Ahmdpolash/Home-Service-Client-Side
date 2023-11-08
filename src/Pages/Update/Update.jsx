@@ -3,68 +3,61 @@ import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useLoaderData, useParams } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Update = () => {
+  const { user } = useContext(authContext);
 
-  // const { user } = useContext(authContext);
+  const [service, setService] = useState({});
 
-  // const data = useLoaderData();
+  const data = useLoaderData();
   // console.log(data);
 
-  // const { id } = useParams();
+  const { id } = useParams();
 
-  // console.log(id);
+  useEffect(() => {
+    const filter = data.find((service) => service._id == id);
+    console.log(filter);
+    setService(filter)
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/api/bookings/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setData(data);
-  //     });
-  // }, []);
+  }, []);
 
-  // const {
-  //   image,
-  //   serviceName,
-  //   yourEmail,
-  //   provider_location,
-  //   provider_name,
-  //   description,
-  //   price,
-  //   _id
-  // } = data;
 
-  // const handleUpdate = (e) => {
+  console.log(id);
 
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const service_image = form.image.value;
-  //   const service_name = form.serviceName.value;
-  //   const provider_name = form.yourName.value;
-  //   const yourEmail = user.email;
-  //   const price = form.price.value;
-  //   const provider_location = form.area.value;
-  //   const description = form.description.value;
+ 
 
-  //   const formData = {
-  //     service_image,
-  //     service_name,
-  //     provider_name,
-  //     yourEmail,
-  //     price,
-  //     provider_location,
-  //     description,
-  //   };
-  //   console.log(formData);
 
-  //   axios
-  //     .put(`http://localhost:5000/api/services/${_id}`, formData)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       Swal.fire("Good job!", "Product Updated Successfully!", "success");
-  //     });
-  // };
+  const handleUpdate = (e) => {
+
+    e.preventDefault();
+    const form = e.target;
+    const service_image = form.image.value;
+    const service_name = form.serviceName.value;
+    const provider_name = form.yourName.value;
+    const yourEmail = user.email;
+    const price = form.price.value;
+    const provider_location = form.area.value;
+    const description = form.description.value;
+
+    const formData = {
+      service_image,
+      service_name,
+      provider_name,
+      yourEmail,
+      price,
+      provider_location,
+      description,
+    };
+    console.log(formData);
+
+    axios
+      .put(`http://localhost:5000/api/services/${id}`, formData)
+      .then((res) => {
+        console.log(res.data);
+        Swal.fire("Good job!", "Product Updated Successfully!", "success");
+      });
+  };
 
   return (
     <div>
@@ -73,7 +66,8 @@ const Update = () => {
         <title>BeClean | Update</title>
       </Helmet>
 
-      {/* <div>
+      <h1>hello{id}</h1>
+      <div>
         <div className="bg-gray-100 p-4">
           <form
             onSubmit={handleUpdate}
@@ -94,7 +88,7 @@ const Update = () => {
                     type="text"
                     placeholder="Service Name"
                     name="serviceName"
-                    defaultValue={serviceName}
+                    defaultValue={service.service_name}
                     className="input w-full input-bordered"
                   />
                 </label>
@@ -109,7 +103,7 @@ const Update = () => {
                 <label className="input-group w-full">
                   <input
                     type="text"
-                    defaultValue={image}
+                    defaultValue={service.service_image}
                     placeholder="Service Image URL."
                     name="image"
                     className="input outline-red-400 w-full input-bordered"
@@ -166,7 +160,7 @@ const Update = () => {
                     type="text"
                     placeholder="$Price"
                     name="price"
-                    defaultValue={price}
+                    defaultValue={service.price}
                     className="input w-full input-bordered"
                   />
                 </label>
@@ -182,7 +176,7 @@ const Update = () => {
                   <input
                     type="text"
                     placeholder="Area"
-                    defaultValue={provider_location}
+                    defaultValue={service.provider_location}
                     name="area"
                     className="input bg-white w-full input-bordered"
                   />
@@ -199,7 +193,7 @@ const Update = () => {
               <br />
               <textarea
                 name="description"
-                defaultValue={description}
+                defaultValue={service.description}
                 className="w-full border-2 p-4"
                 id=""
                 placeholder="Description"
@@ -217,7 +211,7 @@ const Update = () => {
             </div>
           </form>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

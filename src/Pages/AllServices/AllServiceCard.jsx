@@ -1,10 +1,13 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
+import { authContext } from "../../Provider/AuthProvider";
 
 const AllServiceCard = ({ service }) => {
+  const {user} = useContext(authContext)
   const { description } = service || [];
 
   const sliceDesc = description.split(" ").slice(0, 65).join(" ");
@@ -40,7 +43,7 @@ const AllServiceCard = ({ service }) => {
 
               <img
                 className="w-[60px] h-[60px]  mt-2 rounded-full"
-                src={service.provider_image}
+                src={user.photoURL}
                 alt=""
               />
               <div className="flex flex-row  justify-between items-center py-2 mt-2">

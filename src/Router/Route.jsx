@@ -61,11 +61,11 @@ const Route = createBrowserRouter([
         element: <PrivateRoute><ManageService /></PrivateRoute>,
         loader:()=>fetch('http://localhost:5000/api/bookings')
       },
-      // {
-      //   path:'/update/:id',
-      //   element:<Update/>,
-      //   loader:({params}) => fetch(`http://localhost:5000/api/bookings/${params.id}`)
-      // }
+      {
+        path:'/update/:id',
+        element:<Update/>,
+        loader:() => fetch(`http://localhost:5000/api/services`)
+      }
     ],
   },
   {
