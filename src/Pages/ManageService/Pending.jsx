@@ -14,17 +14,17 @@ const Pending = () => {
       setStatus(res.data.status);
     });
   }, []);
-
-  useEffect(() => {
-    axios.put(`http://localhost:5000/api/pending/${user.email}`).then((res) => {
-      setPending(res.data);
-      setStatus(res.data.status);
-    });
-  }, [status]);
-
   console.log(pending);
+
+  // useEffect(() => {
+  //   axios.put(`http://localhost:5000/api/pending/${user.email}`).then((res) => {
+  //     setPending(res.data);
+  //     setStatus(res.data.status);
+  //   });
+  // }, [status]);
+
   return (
-    <div>
+    <div className="lg:mb-32">
       <div className="space-y-2 px-4 lg:px-16 lg:h-[40vh] lg:py-16">
         <h1 className="font-bold text-2xl lg:text-4xl">My Pendings</h1>
         <p className="bg-gray-100 font-semibold py-2 px-4">
@@ -36,7 +36,7 @@ const Pending = () => {
             No bookings Found
           </p>
         ) : (
-          <div className="overflow-x-auto lg:px-16 my-4 mx-auto text-white">
+          <div className="overflow-x-auto  my-4 mx-auto text-white">
             <table className="table">
               <thead>
                 <tr className="text-center font-semibold text-[16px] text-white bg-[#2E856E]">
@@ -86,9 +86,11 @@ const Pending = () => {
                       <td className="text-black font-bold">{booking?.date}</td>
 
                       <th>
-                        <span className="bg-red-300 py-2 px-2 text-black rounded-lg">
-                          {booking.status}
-                        </span>
+                       <select className="text-black p-3 rounded-lg" name="" id="">
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                       </select>
                       </th>
                     </tr>
                   </>
@@ -98,10 +100,6 @@ const Pending = () => {
           </div>
         )}
       </div>
-
-      {/* {pending?.map((item) => (
-          <div key={item._id}></div>
-        ))} */}
     </div>
   );
 };
