@@ -9,7 +9,10 @@ import Lottie from "lottie-react";
 import { Helmet } from "react-helmet";
 
 const AllServices = () => {
+  const [show, setShow] = useState(6);
+
   const [search, setSearch] = useState("");
+
   const { data, isLoading } = useQuery({
     queryKey: ["services"],
     queryFn: async () => {
@@ -27,7 +30,6 @@ const AllServices = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>BeClean | Service</title>
-
       </Helmet>
       <form action="" className=" text-center py-6">
         <input
@@ -46,7 +48,7 @@ const AllServices = () => {
           Search
         </button>
       </form>
-     
+
       {isLoading ? (
         <div className="flex mx-auto justify-center lg:h-[60vh] items-center">
           <Lottie
@@ -61,13 +63,18 @@ const AllServices = () => {
               ? service
               : service.service_name.toLowerCase().includes(search);
           })
-          ?.map((service) => (
+          ?.slice(0, show)
+          .map((service) => (
             <AllServiceCard
               key={service._id}
               service={service}
             ></AllServiceCard>
           ))
       )}
+
+      <button onClick={() => setShow(data.length) } className="bg-[#2E856E] rounded-md text-white px-6 py-3 mx-auto flex justify-center my-6">
+        See All
+      </button>
     </div>
   );
 };
