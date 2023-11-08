@@ -51,6 +51,7 @@ const Details = () => {
       providerEmail,
       description,
       providerName,
+      status:'pending'
     };
 
     axios
