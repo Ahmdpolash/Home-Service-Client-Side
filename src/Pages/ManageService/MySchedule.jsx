@@ -13,7 +13,7 @@ const MySchedule = () => {
   const url = `http://localhost:5000/api/bookings/${user?.email}`;
 
   useEffect(() => {
-    axios.get(url).then((res) => {
+    axios.get(url,{withCredentials:true}).then((res) => {
       setBookings(res.data);
     });
   }, []);

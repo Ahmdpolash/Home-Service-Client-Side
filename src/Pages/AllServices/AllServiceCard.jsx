@@ -43,7 +43,7 @@ const AllServiceCard = ({ service }) => {
 
               <img
                 className="w-[60px] h-[60px]  mt-2 rounded-full"
-                src={user.photoURL}
+                src={service.provider_image}
                 alt=""
               />
               <div className="flex flex-row  justify-between items-center py-2 mt-2">

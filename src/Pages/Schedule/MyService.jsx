@@ -9,19 +9,19 @@ import Swal from "sweetalert2";
 import { CiLogin } from "react-icons/ci";
 
 const MyService = () => {
-  
+
   const [service, setServices] = useState([]);
   const { user } = useContext(authContext);
   const url = `http://localhost:5000/api/services/${user?.email}`;
 
 
   useEffect(() => {
-    axios.get(url).then((res) => {
+    axios.get(url,{withCredentials:true}).then((res) => {
       setServices(res.data);
     });
   }, [url, user]);
 
-  console.log(service);
+
 
   const handleDelete = (id) => {
     Swal.fire({

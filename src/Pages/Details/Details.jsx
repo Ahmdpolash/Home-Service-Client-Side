@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { useContext } from "react";
 import { authContext } from "../../Provider/AuthProvider";
@@ -7,16 +7,28 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { useEffect } from "react";
+import Other from "./Other";
 
 const Details = () => {
   const data = useLoaderData();
-  
   const { id } = useParams();
-  const { user } = useContext(authContext);
+  const{user} = useContext(authContext)
 
   const filter = data.find((service) => service._id === id);
+  const [otherServices, setOtherServices] = useState([]);
 
-  console.log(filter);
+  useEffect(() => {
+    // Filter other services by the same provider's email
+    const otherServices = data.filter(
+      (service) => service.yourEmail === filter.yourEmail && service._id !== id
+    );
+
+    setOtherServices(otherServices);
+  }, [data, filter, id]);
+
+
+  // console.log(data);
 
   const handleAddService = (e) => {
     e.preventDefault();
@@ -38,7 +50,7 @@ const Details = () => {
       userEmail,
       providerEmail,
       description,
-      providerName
+      providerName,
     };
 
     axios
@@ -107,6 +119,24 @@ const Details = () => {
             </div>
           </div>
         </div>
+
+
+
+
+        {otherServices.length > 0 && (
+        <div>
+          <h2 className="text-2xl font-bold">Other Services by {filter.provider_name}</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {otherServices.map((otherService) => (
+              <Other key={otherService._id} otherService={otherService}>
+               
+              </Other>
+            ))}
+          </div>
+        </div>
+      )}
+
+
 
         <div className="flex gap-3 justify-between">
           <Marquee>
@@ -271,6 +301,8 @@ const Details = () => {
           </div>
         </dialog>
       </div>
+
+     
     </div>
   );
 };

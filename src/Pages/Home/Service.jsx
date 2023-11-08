@@ -27,6 +27,7 @@ const Service = () => {
       <div className="grid grid-cols-1 mx-auto  lg:grid-cols-2 gap-5">
         {isLoading ? (
           <div className="text-center">
+            
             <Lottie
               className="w-[120px] "
               animationData={loading}

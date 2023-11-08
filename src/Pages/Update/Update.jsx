@@ -17,13 +17,13 @@ const Update = () => {
 
   useEffect(() => {
     const filter = data.find((service) => service._id == id);
-    console.log(filter);
+   
     setService(filter)
 
   }, []);
 
 
-  console.log(id);
+
 
  
 
@@ -66,7 +66,6 @@ const Update = () => {
         <title>BeClean | Update</title>
       </Helmet>
 
-      <h1>hello{id}</h1>
       <div>
         <div className="bg-gray-100 p-4">
           <form

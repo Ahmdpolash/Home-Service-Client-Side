@@ -27,7 +27,7 @@ const AddService = () => {
       provider_location,
       description,
     };
-    console.log(formData);
+  
 
     axios.post("http://localhost:5000/api/services", formData).then((res) => {
       console.log(res.data);
@@ -81,8 +81,8 @@ const AddService = () => {
                 <label className="input-group w-full">
                   <input
                     type="text"
-                    disabled
-                    defaultValue={user.photoURL}
+                    
+                   
                     placeholder="Service Image URL."
                     name="image"
                     className="input outline-red-400 w-full input-bordered"
