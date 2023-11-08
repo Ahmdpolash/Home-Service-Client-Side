@@ -6,4 +6,4 @@ CleanCo Website
   - user can booking there Service
   - User can add there service on this website
   - user can search service to all service page
-  - 
+  - service provider can see who booking his service in pending service section.
