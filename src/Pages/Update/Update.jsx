@@ -5,14 +5,15 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 
 const Update = () => {
-  const { user } = useContext(authContext);
 
-  const data = useLoaderData();
-  console.log(data);
+  // const { user } = useContext(authContext);
 
-  const { id } = useParams();
+  // const data = useLoaderData();
+  // console.log(data);
 
-  console.log(id);
+  // const { id } = useParams();
+
+  // console.log(id);
 
   // useEffect(() => {
   //   fetch(`http://localhost:5000/api/bookings/${id}`)
@@ -23,47 +24,47 @@ const Update = () => {
   //     });
   // }, []);
 
-  const {
-    image,
-    serviceName,
-    yourEmail,
-    provider_location,
-    provider_name,
-    description,
-    price,
-    _id
-  } = data;
+  // const {
+  //   image,
+  //   serviceName,
+  //   yourEmail,
+  //   provider_location,
+  //   provider_name,
+  //   description,
+  //   price,
+  //   _id
+  // } = data;
 
-  const handleUpdate = (e) => {
+  // const handleUpdate = (e) => {
 
-    e.preventDefault();
-    const form = e.target;
-    const service_image = form.image.value;
-    const service_name = form.serviceName.value;
-    const provider_name = form.yourName.value;
-    const yourEmail = user.email;
-    const price = form.price.value;
-    const provider_location = form.area.value;
-    const description = form.description.value;
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const service_image = form.image.value;
+  //   const service_name = form.serviceName.value;
+  //   const provider_name = form.yourName.value;
+  //   const yourEmail = user.email;
+  //   const price = form.price.value;
+  //   const provider_location = form.area.value;
+  //   const description = form.description.value;
 
-    const formData = {
-      service_image,
-      service_name,
-      provider_name,
-      yourEmail,
-      price,
-      provider_location,
-      description,
-    };
-    console.log(formData);
+  //   const formData = {
+  //     service_image,
+  //     service_name,
+  //     provider_name,
+  //     yourEmail,
+  //     price,
+  //     provider_location,
+  //     description,
+  //   };
+  //   console.log(formData);
 
-    axios
-      .put(`http://localhost:5000/api/services/${_id}`, formData)
-      .then((res) => {
-        console.log(res.data);
-        Swal.fire("Good job!", "Product Updated Successfully!", "success");
-      });
-  };
+  //   axios
+  //     .put(`http://localhost:5000/api/services/${_id}`, formData)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       Swal.fire("Good job!", "Product Updated Successfully!", "success");
+  //     });
+  // };
 
   return (
     <div>
@@ -72,7 +73,7 @@ const Update = () => {
         <title>BeClean | Update</title>
       </Helmet>
 
-      <div>
+      {/* <div>
         <div className="bg-gray-100 p-4">
           <form
             onSubmit={handleUpdate}
@@ -216,7 +217,7 @@ const Update = () => {
             </div>
           </form>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -13,7 +13,7 @@ import Details from "../Pages/Details/Details";
 
 import ManageService from "../Pages/ManageService/MySchedule";
 import PrivateRoute from "./PrivateRoute";
-// import Update from "../Pages/Update/Update";
+import Update from "../Pages/Update/Update";
 import MyService from "../Pages/Schedule/MyService";
 import MySchedule from "../Pages/ManageService/MySchedule";
 
@@ -50,11 +50,11 @@ const Route = createBrowserRouter([
       },
       {
         path: "/schedule",
-        element: <MySchedule />,
+        element: <PrivateRoute><MySchedule /></PrivateRoute>
       },
       {
         path: "/myService",
-        element: <MyService />,
+        element: <PrivateRoute><MyService /></PrivateRoute>
       },
       {
         path: "/manage",
