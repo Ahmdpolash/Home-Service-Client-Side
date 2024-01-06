@@ -58,6 +58,8 @@ The House Service Agency Project is a full-stack application built using the MER
     ```
 
 ## Contributing
+-Contributions are welcome! Feel free to open issues and submit pull requests.
+
 
 Contributions are welcome! Feel free to open issues and submit pull requests.
 
